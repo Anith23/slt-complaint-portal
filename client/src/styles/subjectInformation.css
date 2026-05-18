@@ -1,0 +1,377 @@
+/* =========================================
+   SUBJECT INFORMATION PAGE
+========================================= */
+
+.subject-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr 380px;
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+
+/* =========================================
+   LEFT FORM CARD
+========================================= */
+
+.subject-form-card {
+  width: 100%;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 42px;
+
+  border: 1px solid #e8edf5;
+
+  box-shadow:
+    0 2px 12px rgba(15, 23, 42, 0.03);
+}
+
+
+/* =========================================
+   TITLES
+========================================= */
+
+.subject-title {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #003b7a;
+
+  margin-bottom: 10px;
+}
+
+.subject-subtitle {
+  font-size: 15px;
+
+  color: #64748b;
+
+  margin-bottom: 20px;
+
+  line-height: 1.7;
+}
+
+.subject-divider {
+  border: none;
+
+  border-top: 1px solid #e8edf5;
+
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   FORM GROUPS
+========================================= */
+
+.subject-group {
+  margin-bottom: 24px;
+}
+
+.subject-row {
+  display: flex;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.subject-row > div {
+  flex: 1;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.subject-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.subject-input {
+  width: 100%;
+
+  height: 54px;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: 12px;
+
+  padding: 0 18px;
+
+  font-size: 15px;
+
+  color: #0f172a;
+
+  background: #ffffff;
+
+  transition: all 0.3s ease;
+}
+
+.subject-input::placeholder {
+  color: #94a3b8;
+}
+
+.subject-input:focus {
+  outline: none;
+
+  border-color: #0d6efd;
+
+  box-shadow:
+    0 0 0 4px rgba(13,110,253,0.08);
+}
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
+
+.subject-textarea {
+  width: 100%;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: 14px;
+
+  padding: 18px;
+
+  resize: none;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  transition: all 0.3s ease;
+}
+
+.subject-textarea::placeholder {
+  color: #94a3b8;
+}
+
+.subject-textarea:focus {
+  outline: none;
+
+  border-color: #0d6efd;
+
+  box-shadow:
+    0 0 0 4px rgba(13,110,253,0.08);
+}
+
+
+/* =========================================
+   SMALL TEXT
+========================================= */
+
+.subject-small {
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 12px;
+
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   CHECKBOX AREA
+========================================= */
+
+.subject-checkbox {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 32px;
+}
+
+.subject-checkbox input {
+  width: 18px;
+
+  height: 18px;
+
+  margin-top: 3px;
+}
+
+.subject-checkbox strong {
+  display: block;
+
+  font-size: 14px;
+
+  color: #0f172a;
+
+  margin-bottom: 4px;
+}
+
+.subject-checkbox p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #64748b;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   BUTTON AREA
+========================================= */
+
+.subject-buttons {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 40px;
+}
+
+.right-buttons {
+  display: flex;
+
+  gap: 14px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.draft-btn,
+.back-btn,
+.continue-btn {
+  height: 50px;
+
+  padding: 0 24px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+
+/* DRAFT */
+
+.draft-btn {
+  background: white;
+
+  border: 1px solid #0d6efd;
+
+  color: #0d6efd;
+}
+
+
+/* BACK */
+
+.back-btn {
+  background: white;
+
+  border: 1px solid #dbe3ed;
+
+  color: #0f172a;
+}
+
+
+/* CONTINUE */
+
+.continue-btn {
+  border: none;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0d6efd,
+      #0056d6
+    );
+
+  box-shadow:
+    0 10px 25px rgba(13,110,253,0.18);
+}
+
+
+/* HOVER */
+
+.draft-btn:hover,
+.back-btn:hover,
+.continue-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .subject-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .subject-row {
+    flex-direction: column;
+  }
+
+  .subject-buttons {
+    flex-direction: column;
+
+    gap: 20px;
+
+    align-items: stretch;
+  }
+
+  .right-buttons {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .draft-btn,
+  .back-btn,
+  .continue-btn {
+    width: 100%;
+  }
+
+}

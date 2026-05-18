@@ -1,0 +1,410 @@
+/* =========================================
+   COMPLAINT DETAILS PAGE
+========================================= */
+
+.complaint-details-wrapper {
+  display: flex;
+
+  gap: 24px;
+
+  align-items: flex-start;
+}
+
+
+/* LEFT FORM */
+
+.complaint-form-card {
+  flex: 1;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 40px;
+
+  border: 1px solid #e8edf5;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,0.03);
+}
+
+
+/* RIGHT SIDEBAR */
+
+
+/* CARDS */
+
+
+
+
+/* TITLE */
+
+.complaint-title {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #003b7a;
+
+  margin-bottom: 10px;
+}
+
+.complaint-subtitle {
+  color: #64748b;
+
+  margin-bottom: 20px;
+
+  font-size: 15px;
+}
+
+.complaint-divider {
+  margin-bottom: 30px;
+
+  border-color: #e8edf5;
+}
+
+
+/* LABEL */
+
+.complaint-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+
+/* INPUT */
+
+.complaint-input {
+  width: 100%;
+
+  height: 54px;
+
+  border-radius: 12px;
+
+  border: 1px solid #d9e2ec;
+
+  padding: 0 18px;
+
+  font-size: 15px;
+
+  transition: 0.3s ease;
+
+  background: white;
+}
+
+.complaint-input:focus {
+  outline: none;
+
+  border-color: #0d6efd;
+
+  box-shadow:
+    0 0 0 4px rgba(13,110,253,0.08);
+}
+
+
+/* TEXTAREA */
+
+.complaint-textarea {
+  width: 100%;
+
+  border-radius: 14px;
+
+  border: 1px solid #d9e2ec;
+
+  padding: 18px;
+
+  font-size: 15px;
+
+  resize: none;
+
+  transition: 0.3s ease;
+}
+
+.complaint-textarea:focus {
+  outline: none;
+
+  border-color: #0d6efd;
+
+  box-shadow:
+    0 0 0 4px rgba(13,110,253,0.08);
+}
+
+
+/* ROW */
+
+.form-row {
+  display: flex;
+
+  gap: 20px;
+
+  margin-bottom: 24px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+
+/* SMALL TEXT */
+
+.helper-text,
+.small-text {
+  font-size: 12px;
+
+  color: #64748b;
+
+  margin-top: 6px;
+}
+
+
+/* RADIO */
+
+.radio-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 10px;
+}
+
+.radio-inline {
+  display: flex;
+
+  gap: 30px;
+
+  margin-top: 18px;
+}
+
+.radio-group label,
+.radio-inline label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 14px;
+
+  color: #0f172a;
+}
+
+
+/* BUTTON AREA */
+
+.button-group {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 35px;
+}
+
+.button-right {
+  display: flex;
+
+  gap: 15px;
+}
+
+
+/* BUTTONS */
+
+.draft-btn,
+.back-btn,
+.continue-btn {
+  height: 50px;
+
+  border-radius: 12px;
+
+  padding: 0 24px;
+
+  font-weight: 600;
+
+  font-size: 14px;
+
+  transition: 0.3s ease;
+
+  cursor: pointer;
+}
+
+.draft-btn {
+  background: white;
+
+  border: 1px solid #0d6efd;
+
+  color: #0d6efd;
+}
+
+.back-btn {
+  background: white;
+
+  border: 1px solid #dbe3ed;
+
+  color: #0f172a;
+}
+
+.continue-btn {
+  background: linear-gradient(
+    135deg,
+    #0d6efd,
+    #0056d6
+  );
+
+  border: none;
+
+  color: white;
+
+  box-shadow:
+    0 10px 25px rgba(13,110,253,0.18);
+}
+
+
+/* HOVER */
+
+.draft-btn:hover,
+.back-btn:hover,
+.continue-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* SIDEBAR */
+
+.progress-card h3,
+.info-card h4,
+.help-card h4 {
+  color: #0f172a;
+
+  font-weight: 800;
+
+  margin-bottom: 18px;
+}
+
+.progress-card p,
+.info-card p,
+.help-card p {
+  color: #64748b;
+
+  line-height: 1.7;
+
+  font-size: 14px;
+}
+
+
+
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+
+  .complaint-details-wrapper {
+    flex-direction: column;
+  }
+
+  .progress-sidebar {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .button-group {
+    flex-direction: column;
+
+    gap: 20px;
+
+    align-items: stretch;
+  }
+
+  .button-right {
+    width: 100%;
+  }
+
+  .draft-btn,
+  .back-btn,
+  .continue-btn {
+    width: 100%;
+  }
+
+}
+
+/* =========================================
+   RIGHT SIDE PROGRESS DESIGN
+========================================= */
+
+.progress-circle-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  margin-top: 18px;
+}
+
+
+/* CIRCLE */
+
+
+
+
+/* INNER WHITE */
+
+.progress-circle::before {
+  content: "";
+
+  
+
+  width: 64px;
+  height: 64px;
+
+  border-radius: 50%;
+
+  background: white;
+}
+
+
+/* INNER CONTENT */
+
+
+
+
+/* NUMBER */
+
+
+
+
+/* OF 6 */
+
+
+
+.error-text{
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.error-text{
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 6px;
+  font-weight: 500;
+}
+

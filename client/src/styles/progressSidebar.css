@@ -1,0 +1,234 @@
+/* =========================================
+   PROGRESS SIDEBAR
+========================================= */
+
+.progress-sidebar {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+/* =========================================
+   SIDEBAR CARDS
+========================================= */
+
+.progress-card,
+.info-card,
+.help-card {
+  background: #ffffff;
+
+  border: 1px solid #e7edf5;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 2px 10px rgba(15, 23, 42, 0.03);
+}
+
+
+/* =========================================
+   CARD TITLES
+========================================= */
+
+.progress-card h3,
+.info-card h4,
+.help-card h4 {
+  font-size: 20px;
+
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================
+   PROGRESS CONTENT
+========================================= */
+
+.progress-content {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+}
+
+
+/* =========================================
+   ROUND PROGRESS CIRCLE
+========================================= */
+
+.progress-circle {
+  width: 96px;
+
+  height: 96px;
+
+  border-radius: 50%;
+
+  background:
+    conic-gradient(
+      #0d6efd 0deg,
+      #0d6efd 180deg,
+      #dfe7f3 180deg,
+      #dfe7f3 360deg
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   INNER WHITE CIRCLE
+========================================= */
+
+.circle-inner {
+  width: 72px;
+
+  height: 72px;
+
+  background: #ffffff;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =========================================
+   STEP NUMBER
+========================================= */
+
+.step-number {
+  font-size: 30px;
+
+  font-weight: 800;
+
+  color: #0d6efd;
+
+  line-height: 1;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+/* =========================================
+   STEP TOTAL
+========================================= */
+
+.step-total {
+  font-size: 12px;
+
+  color: #64748b;
+
+  line-height: 1;
+
+  margin-top: 4px;
+}
+
+
+/* =========================================
+   PROGRESS TEXT
+========================================= */
+
+.progress-text h5 {
+  font-size: 16px;
+
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 10px;
+}
+
+.progress-text p {
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #64748b;
+
+  margin: 0;
+}
+
+
+/* =========================================
+   INFO CARD
+========================================= */
+
+.info-card p,
+.help-card p {
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #64748b;
+
+  margin-bottom: 12px;
+}
+
+
+/* =========================================
+   HELP CONTACTS
+========================================= */
+
+.help-contact {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+
+  color: #0d6efd;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .progress-content {
+    flex-direction: row;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .progress-content {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+}

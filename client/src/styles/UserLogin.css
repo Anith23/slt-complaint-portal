@@ -1,0 +1,58 @@
+
+/* =========================================
+   USER LOGIN PAGE EXTRA STYLES
+   (Add below existing UserAuth.css)
+========================================= */
+
+/* LOGIN CARD SMALLER */
+
+.user-auth-right .register-card {
+  max-width: 500px;
+}
+
+/* LOGIN FORM SPACING */
+
+.register-form .input-group {
+  margin-bottom: 16px;
+}
+
+/* LOGIN BUTTON */
+
+.register-btn {
+  margin-top: 10px;
+}
+
+/* LOGIN PAGE TEXT */
+
+.register-header h2 {
+  letter-spacing: -1px;
+}
+
+/* SMOOTH INPUT EFFECT */
+
+.input-group input:hover {
+  border-color: #b9c7e6;
+}
+
+/* BUTTON HOVER */
+
+.register-btn:hover {
+  background: linear-gradient(90deg, #004eff, #0d36c9);
+  transform: translateY(-2px);
+}
+
+/* AUTH FOOTER */
+
+.auth-footer {
+  padding-top: 5px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .user-auth-right .register-card {
+    max-width: 100%;
+  }
+
+}

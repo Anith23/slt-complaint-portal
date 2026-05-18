@@ -1,0 +1,17 @@
+import React from "react";
+
+const DashboardPage = () => {
+
+  return (
+
+    <div className="container mt-5">
+
+      <h1>Admin Dashboard</h1>
+
+    </div>
+
+  );
+
+};
+
+export default DashboardPage;

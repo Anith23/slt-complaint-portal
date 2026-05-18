@@ -1,0 +1,3 @@
+E:\SLT-Project\client\public
+
+i put the logo image inside this folder location

@@ -1,0 +1,390 @@
+/* =========================================
+   CONFIRMATION PAGE
+========================================= */
+
+.confirmation-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr 380px;
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+
+/* =========================================
+   LEFT CARD
+========================================= */
+
+.confirmation-card {
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 42px;
+
+  border: 1px solid #e8edf5;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.confirmation-title {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #003b7a;
+
+  margin-bottom: 10px;
+}
+
+.confirmation-subtitle {
+  color: #64748b;
+
+  margin-bottom: 36px;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   SUCCESS AREA
+========================================= */
+
+.success-area {
+  text-align: center;
+
+  margin-bottom: 40px;
+}
+
+.success-icon {
+  width: 110px;
+
+  height: 110px;
+
+  border-radius: 50%;
+
+  background: #eaf8ef;
+
+  color: #16a34a;
+
+  font-size: 60px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto 24px;
+}
+
+.success-area h3 {
+  font-size: 34px;
+
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 18px;
+}
+
+.success-area p {
+  color: #475569;
+
+  font-size: 15px;
+
+  margin-bottom: 8px;
+}
+
+
+/* =========================================
+   REFERENCE BOX
+========================================= */
+
+.reference-box {
+  border: 1px solid #b7e4c7;
+
+  background: #f4fbf6;
+
+  border-radius: 16px;
+
+  padding: 32px;
+
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.reference-box h4 {
+  font-size: 22px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+
+  margin-bottom: 18px;
+}
+
+.reference-number {
+  font-size: 42px;
+
+  font-weight: 900;
+
+  color: #16a34a;
+
+  margin-bottom: 14px;
+}
+
+.reference-box p {
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   NEXT BOX
+========================================= */
+
+.next-box {
+  border: 1px solid #c7d2fe;
+
+  background: #f8fbff;
+
+  border-radius: 16px;
+
+  padding: 28px;
+
+  margin-bottom: 36px;
+}
+
+.next-box h4 {
+  font-size: 24px;
+
+  font-weight: 800;
+
+  color: #1e40af;
+
+  margin-bottom: 18px;
+}
+
+.next-box p {
+  color: #475569;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.confirmation-buttons {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.print-btn,
+.home-btn {
+  height: 52px;
+
+  padding: 0 28px;
+
+  border-radius: 12px;
+
+  border: none;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.print-btn {
+  background: white;
+
+  border: 1px solid #0d6efd;
+
+  color: #0d6efd;
+}
+
+.home-btn {
+  background: linear-gradient(
+    135deg,
+    #0d6efd,
+    #0056d6
+  );
+
+  color: white;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.confirmation-sidebar {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+.summary-card,
+.help-card,
+.important-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  border: 1px solid #e8edf5;
+}
+
+.summary-card h3,
+.help-card h4,
+.important-card h4 {
+  font-size: 24px;
+
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 24px;
+}
+
+
+/* SUMMARY ITEMS */
+
+.summary-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
+
+  color: #475569;
+}
+
+.summary-item strong {
+  color: #0f172a;
+}
+
+
+/* HELP */
+
+.help-card p,
+.important-card p {
+  font-size: 14px;
+
+  color: #64748b;
+
+  line-height: 1.8;
+}
+
+.help-link {
+  color: #0d6efd !important;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+
+  .confirmation-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .confirmation-buttons {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .print-btn,
+  .home-btn {
+    width: 100%;
+  }
+
+  .summary-item {
+    flex-direction: column;
+  }
+
+}
+
+.reference-copy-area {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 15px;
+
+  margin: 25px 0;
+
+  flex-wrap: wrap;
+
+}
+
+
+
+.copy-btn {
+
+  background: #0d6efd;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+}
+
+
+
+.copy-btn:hover {
+
+  background: #0b5ed7;
+
+  transform: translateY(-2px);
+
+}

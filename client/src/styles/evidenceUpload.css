@@ -1,0 +1,375 @@
+.evidence-wrapper {
+  display: grid;
+
+  grid-template-columns: 1fr 360px;
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+.evidence-form-card {
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 42px;
+
+  border: 1px solid #e8edf5;
+}
+
+.evidence-title {
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  color: #003b7a;
+
+  margin-bottom: 10px;
+}
+
+.evidence-subtitle {
+  font-size: 15px;
+
+  color: #64748b;
+
+  margin-bottom: 18px;
+}
+
+.evidence-divider {
+  margin-bottom: 28px;
+
+  border-color: #e8edf5;
+}
+
+
+/* UPLOAD */
+
+.upload-section {
+  border: 1px solid #e8edf5;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  margin-bottom: 32px;
+}
+
+.upload-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.upload-header h5 {
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.upload-rules p {
+  font-size: 12px;
+
+  color: #64748b;
+
+  margin: 0;
+}
+
+.upload-box {
+  border: 2px dashed #cbd5e1;
+
+  border-radius: 16px;
+
+  padding: 50px 20px;
+
+  text-align: center;
+
+  margin-bottom: 24px;
+}
+
+.upload-icon {
+  font-size: 48px;
+
+  color: #0d6efd;
+
+  margin-bottom: 10px;
+}
+
+.upload-box p {
+  font-size: 15px;
+
+  color: #64748b;
+}
+
+.upload-box span {
+  color: #0d6efd;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.upload-box small {
+  color: #94a3b8;
+}
+
+
+/* FILES */
+
+.file-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.file-item {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  padding: 14px 18px;
+}
+
+.file-left,
+.file-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.file-badge {
+  width: 42px;
+
+  height: 28px;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.pdf {
+  background: #ef4444;
+}
+
+.doc {
+  background: #2563eb;
+}
+
+.xls {
+  background: #16a34a;
+}
+
+.img {
+  background: #f97316;
+}
+
+.file-right button {
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-size: 18px;
+}
+
+
+/* TEXTAREA */
+
+.evidence-group {
+  margin-bottom: 30px;
+}
+
+.evidence-label {
+  display: block;
+
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.evidence-small {
+  font-size: 13px;
+
+  color: #64748b;
+
+  margin-bottom: 12px;
+}
+
+.evidence-textarea {
+  width: 100%;
+
+  border: 1px solid #d9e2ec;
+
+  border-radius: 14px;
+
+  padding: 18px;
+
+  resize: none;
+
+  min-height: 130px;
+}
+
+.char-count {
+  text-align: right;
+
+  font-size: 12px;
+
+  color: #94a3b8;
+
+  margin-top: 8px;
+}
+
+
+/* BUTTONS */
+
+.evidence-buttons {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.right-buttons {
+  display: flex;
+
+  gap: 14px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+
+  .evidence-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .upload-header {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .evidence-buttons {
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .right-buttons {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+}
+
+/* =========================
+   EVIDENCE MULTI SELECT
+========================= */
+
+.evidence-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 15px;
+
+  margin-top: 15px;
+
+  padding: 20px;
+
+  border: 1px solid #dbe2ef;
+
+  border-radius: 12px;
+
+  background: #f8fbff;
+}
+
+.evidence-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 15px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  color: #1e293b;
+}
+
+.evidence-item:hover {
+  border-color: #0d6efd;
+
+  background: #f0f7ff;
+}
+
+.evidence-item input[type="checkbox"] {
+  width: 18px;
+
+  height: 18px;
+
+  accent-color: #0d6efd;
+
+  cursor: pointer;
+}
+
+.error-text {
+  color: red;
+
+  font-size: 14px;
+
+  margin-top: 8px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
