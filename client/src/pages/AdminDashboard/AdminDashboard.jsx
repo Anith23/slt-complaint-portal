@@ -25,9 +25,14 @@ const AdminDashboard = () => {
     stats: {
 
       totalComplaints: 0,
+
       pendingComplaints: 0,
+
       investigationComplaints: 0,
-      resolvedComplaints: 0
+
+      resolvedComplaints: 0,
+
+      highPriorityComplaints: 0
 
     },
 
@@ -143,5 +148,6 @@ const AdminDashboard = () => {
   );
 
 };
+
 
 export default AdminDashboard;

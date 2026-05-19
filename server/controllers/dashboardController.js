@@ -32,6 +32,12 @@ const getDashboardData = async (req, res) => {
 
     });
 
+    const highPriorityComplaints =await Complaint.countDocuments({
+
+      priority: "High"
+
+    });
+
     /* =========================================
        RECENT COMPLAINTS
     ========================================= */
@@ -148,7 +154,9 @@ const getDashboardData = async (req, res) => {
 
         investigationComplaints,
 
-        resolvedComplaints
+        resolvedComplaints,
+
+        highPriorityComplaints
 
       },
 

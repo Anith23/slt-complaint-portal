@@ -6,7 +6,8 @@ import {
   FaClipboardList,
   FaClock,
   FaSearch,
-  FaCheckCircle
+  FaCheckCircle,
+  FaExclamationTriangle
 } from "react-icons/fa";
 
 const StatsCards = ({ stats = {} }) => {
@@ -43,6 +44,14 @@ const StatsCards = ({ stats = {} }) => {
       icon: <FaCheckCircle />,
       color: "green",
       growth: "15.7% from last month"
+    },
+
+    {
+      title: "High Priority",
+      value: stats.highPriorityComplaints || 0,
+      icon: <FaExclamationTriangle />,
+      color: "red",
+      growth: "Urgent complaint cases"
     }
 
   ];

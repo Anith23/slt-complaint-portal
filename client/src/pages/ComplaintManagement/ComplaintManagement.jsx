@@ -29,6 +29,14 @@ const ComplaintManagement = () => {
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  /* SEARCH + FILTER STATES */
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [statusFilter, setStatusFilter] = useState("");
+
+  const [priorityFilter, setPriorityFilter] = useState("");
+
   /* =========================================
      FETCH COMPLAINTS
   ========================================= */
@@ -59,9 +67,7 @@ const ComplaintManagement = () => {
 
   };
 
-
-
-    /* =========================================
+  /* =========================================
      UPDATE COMPLAINT STATUS
   ========================================= */
 
@@ -113,6 +119,64 @@ const ComplaintManagement = () => {
   };
 
   /* =========================================
+     FILTERED COMPLAINTS
+  ========================================= */
+
+  const filteredComplaints = complaints.filter(
+    (item) => {
+
+      const matchesSearch =
+
+        item.crn
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase())
+
+        ||
+
+        item.fullName
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase())
+
+        ||
+
+        item.complaintCategory
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase());
+
+      const matchesStatus =
+
+        statusFilter === ""
+
+        ||
+
+        item.status === statusFilter;
+
+      const matchesPriority =
+
+        priorityFilter === ""
+
+        ||
+
+        item.priority === priorityFilter;
+
+      return (
+
+        matchesSearch
+
+        &&
+
+        matchesStatus
+
+        &&
+
+        matchesPriority
+
+      );
+
+    }
+  );
+
+  /* =========================================
      LOAD DATA
   ========================================= */
 
@@ -156,11 +220,94 @@ const ComplaintManagement = () => {
 
           </div>
 
-          {/* TABLE */}
+          {/* =========================================
+              FILTER BAR
+          ========================================= */}
+
+          <div className="filter-bar">
+
+            {/* SEARCH */}
+
+            <input
+              type="text"
+              placeholder="Search complaints..."
+              value={searchTerm}
+              onChange={(e) =>
+                setSearchTerm(e.target.value)
+              }
+            />
+
+            {/* STATUS FILTER */}
+
+            <select
+              value={statusFilter}
+              onChange={(e) =>
+                setStatusFilter(e.target.value)
+              }
+            >
+
+              <option value="">
+                All Status
+              </option>
+
+              <option value="Pending">
+                Pending
+              </option>
+
+              <option value="Under Investigation">
+                Under Investigation
+              </option>
+
+              <option value="In Progress">
+                In Progress
+              </option>
+
+              <option value="Resolved">
+                Resolved
+              </option>
+
+              <option value="Closed">
+                Closed
+              </option>
+
+            </select>
+
+            {/* PRIORITY FILTER */}
+
+            <select
+              value={priorityFilter}
+              onChange={(e) =>
+                setPriorityFilter(e.target.value)
+              }
+            >
+
+              <option value="">
+                All Priority
+              </option>
+
+              <option value="High">
+                High
+              </option>
+
+              <option value="Medium">
+                Medium
+              </option>
+
+              <option value="Low">
+                Low
+              </option>
+
+            </select>
+
+          </div>
+
+          {/* =========================================
+              TABLE
+          ========================================= */}
 
           <ComplaintTable
 
-            complaints={complaints}
+            complaints={filteredComplaints}
 
             setSelectedComplaint={setSelectedComplaint}
 
@@ -168,9 +315,9 @@ const ComplaintManagement = () => {
 
           />
 
-          {/* DRAWER */}
-
-          {/* DRAWER */}
+          {/* =========================================
+              DRAWER
+          ========================================= */}
 
           <ComplaintDetails
 
