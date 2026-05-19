@@ -270,6 +270,10 @@ const trackComplaint = async (req, res) => {
    UPDATE COMPLAINT STATUS
 ========================================= */
 
+/* =========================================
+   UPDATE COMPLAINT STATUS
+========================================= */
+
 const updateComplaintStatus = async (req, res) => {
 
   try {
@@ -297,7 +301,7 @@ const updateComplaintStatus = async (req, res) => {
 
     if (status) {
 
-  complaint.status = status;
+      complaint.status = status;
 
     }
 
@@ -314,25 +318,11 @@ const updateComplaintStatus = async (req, res) => {
 
     }
 
-    /* TIMELINE */
-
-    complaint.timeline.push({
-
-      title: status,
-
-      description:
-        `Complaint moved to ${status}`,
-
-      date: new Date()
-
-    });
-
     await complaint.save();
 
     res.status(200).json({
 
       success: true,
-      message: "Complaint updated successfully",
       complaint
 
     });
@@ -341,12 +331,10 @@ const updateComplaintStatus = async (req, res) => {
 
   catch (error) {
 
-    console.log(error);
-
     res.status(500).json({
 
       success: false,
-      message: "Server Error"
+      message: error.message
 
     });
 

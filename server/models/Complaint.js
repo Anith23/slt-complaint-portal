@@ -63,22 +63,22 @@ const complaintSchema = new mongoose.Schema(
     /* =========================================
    PRIORITY
 ========================================= */
+    priority: {
 
-priority: {
+      type: String,
 
-  type: String,
+      enum: [
 
-  enum: [
+        "Low",
+        "Medium",
+        "High"
 
-    "Low",
-    "Medium",
-    "High"
+      ],
 
-  ],
+      default: "Medium"
 
-  default: "Medium"
+    },
 
-},
 
 /* =========================================
    TIMELINE

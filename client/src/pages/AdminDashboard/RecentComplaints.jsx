@@ -107,10 +107,8 @@ const RecentComplaints = ({ complaints = [] }) => {
 
                   <td>
 
-                    <span className="priority-badge medium">
-
-                      Medium
-
+                    <span className={`priority-badge ${item.priority?.toLowerCase()}`}>
+                      {item.priority || "Medium"}
                     </span>
 
                   </td>
