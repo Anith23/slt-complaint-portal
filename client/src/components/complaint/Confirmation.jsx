@@ -8,9 +8,14 @@ const Confirmation = ({ formData }) => {
 
   const navigate = useNavigate();
 
-  const [referenceNumber, setReferenceNumber] = useState("");
+  const [referenceNumber, setReferenceNumber] =
+    useState("");
 
-  const [submittedDate, setSubmittedDate] = useState("");
+  const [trackingCode, setTrackingCode] =
+    useState("");
+
+  const [submittedDate, setSubmittedDate] =
+    useState("");
 
   /* =========================================
      GENERATE CRN + DATE
@@ -27,6 +32,19 @@ const Confirmation = ({ formData }) => {
     if (savedCRN) {
 
       setReferenceNumber(savedCRN);
+
+    }
+
+    const savedTrackingCode =
+      localStorage.getItem(
+        "latestTrackingCode"
+      );
+
+    if (savedTrackingCode) {
+
+      setTrackingCode(
+        savedTrackingCode
+      );
 
     }
 
@@ -85,6 +103,16 @@ const Confirmation = ({ formData }) => {
     );
 
     alert("Reference Number Copied!");
+
+  };
+
+  const copyTrackingCode = () => {
+
+    navigator.clipboard.writeText(
+      trackingCode
+    );
+
+    alert("Tracking Code Copied!");
 
   };
 
@@ -177,10 +205,50 @@ const Confirmation = ({ formData }) => {
 
           </div>
 
+          {/* TRACKING CODE */}
+
+          <div className="reference-box">
+
+            <h4>
+
+              Your Tracking Code
+
+            </h4>
+
+            <div className="reference-copy-area">
+
+              <div className="reference-number">
+
+                {trackingCode}
+
+              </div>
+
+              <button
+                className="copy-btn"
+                onClick={copyTrackingCode}
+              >
+
+                📋 Copy
+
+              </button>
+
+            </div>
+
+            <p>
+
+              Please save this tracking code securely.
+              It is required to track your complaint.
+
+            </p>
+
+          </div>
+          
+
           <p>
 
-            Please save this reference number
-            for future communication and follow-up.
+            Please save both the CRN and
+            Tracking Code securely for future
+            complaint tracking and follow-up.
 
           </p>
 

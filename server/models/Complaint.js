@@ -8,13 +8,21 @@ const complaintSchema = new mongoose.Schema(
 
   {
 
-
-    
     /* =========================================
        SYSTEM FIELDS
     ========================================= */
 
     crn: {
+
+      type: String,
+
+      required: true,
+
+      unique: true
+
+    },
+
+    trackingCode: {
 
       type: String,
 
@@ -61,8 +69,9 @@ const complaintSchema = new mongoose.Schema(
     },
 
     /* =========================================
-   PRIORITY
-========================================= */
+       PRIORITY
+    ========================================= */
+
     priority: {
 
       type: String,
@@ -79,38 +88,41 @@ const complaintSchema = new mongoose.Schema(
 
     },
 
+    /* =========================================
+       TIMELINE
+    ========================================= */
 
-/* =========================================
-   TIMELINE
-========================================= */
+    timeline: [
 
-timeline: [
+      {
 
-  {
+        title: {
 
-    title: {
+          type: String
 
-      type: String
+        },
 
-    },
+        description: {
 
-    description: {
+          type: String
 
-      type: String
+        },
 
-    },
+        date: {
 
-    date: {
+          type: Date,
 
-      type: Date,
+          default: Date.now
 
-      default: Date.now
+        }
 
-    }
+      }
 
-  }
+    ],
 
-],
+    /* =========================================
+       CIABOC ESCALATION
+    ========================================= */
 
     ciabocEscalation: {
 
@@ -120,13 +132,25 @@ timeline: [
 
     },
 
+    /* =========================================
+       REMARKS
+    ========================================= */
+
     remarks: [
 
       {
 
-        message: String,
+        message: {
 
-        addedBy: String,
+          type: String
+
+        },
+
+        addedBy: {
+
+          type: String
+
+        },
 
         createdAt: {
 
@@ -139,6 +163,7 @@ timeline: [
       }
 
     ],
+
 
     /* =========================================
        SECTION 1

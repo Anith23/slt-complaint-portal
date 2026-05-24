@@ -408,3 +408,31 @@
   font-weight: 500;
 }
 
+.report-form-card {
+
+  width: 146%;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 45px;
+
+  border: 1px solid #e8edf5;
+
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.04);
+
+}
+
+.report-wrapper {
+
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 20px;
+
+}

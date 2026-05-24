@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import ProgressSidebar from "../common/ProgressSidebar";
-
 import "../../styles/subjectInformation.css";
 
 const SubjectInformation = ({
@@ -487,11 +485,7 @@ const SubjectInformation = ({
           RIGHT SIDE
       ========================================= */}
 
-      <ProgressSidebar
-        step={3}
-        title="Subject(s) Information"
-        description="Provide information about the person(s) involved in the complaint."
-      />
+      
 
     </div>
 

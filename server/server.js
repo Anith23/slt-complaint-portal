@@ -10,6 +10,9 @@ const complaintRoutes = require("./routes/complaintRoutes");
 
 const dashboardRoutes = require("./routes/dashboardRoutes");
 
+const adminRoutes =
+require("./routes/adminRoutes");
+
 /* CONFIG */
 
 dotenv.config();
@@ -67,3 +70,11 @@ app.use(
 app.use("/api/complaints", complaintRoutes);
 
 app.use("/api/dashboard", dashboardRoutes);
+
+app.use(
+
+  "/api/admin",
+
+  adminRoutes
+
+);

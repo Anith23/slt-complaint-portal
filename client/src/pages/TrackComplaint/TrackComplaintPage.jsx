@@ -21,7 +21,7 @@ const TrackComplaintPage = () => {
   const [formData, setFormData] = useState({
 
     crn: "",
-    contactTelephone: ""
+    trackingCode: ""
 
   });
 
@@ -69,8 +69,8 @@ const TrackComplaintPage = () => {
 
           crn: formData.crn.trim(),
 
-          contactTelephone:
-            formData.contactTelephone.trim()
+          trackingCode:
+            formData.trackingCode.trim()
 
         }
 
@@ -86,7 +86,7 @@ const TrackComplaintPage = () => {
 
       setError(
 
-        "Complaint not found. Please check your CRN and Telephone Number."
+        "Complaint not found. Please check your CRN and Tracking Code."
 
       );
 
@@ -133,8 +133,7 @@ const TrackComplaintPage = () => {
         </h1>
 
         <p>
-          Enter your Complaint Reference Number
-          and Telephone Number to check complaint status.
+          Enter your Complaint Reference Number and Tracking Code to check complaint status.
         </p>
 
       </div>
@@ -169,14 +168,14 @@ const TrackComplaintPage = () => {
           <div className="track-form-group">
 
             <label>
-              Telephone Number
+              Tracking Code
             </label>
 
             <input
               type="text"
-              name="contactTelephone"
-              placeholder="0774053185"
-              value={formData.contactTelephone}
+              name="trackingCode"
+              placeholder="TRK-X7K29P"
+              value={formData.trackingCode}
               onChange={handleChange}
               required
             />

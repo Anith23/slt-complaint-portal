@@ -55,7 +55,7 @@ const AdminDashboard = () => {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/api/dashboard/full"
+        `${process.env.REACT_APP_API_URL}/api/dashboard/full`
       );
 
       console.log(response.data);

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 import sltLogo from "../../assets/slt-logo.png";
@@ -16,45 +18,151 @@ const AdminLoginPage = () => {
 
   const [password, setPassword] = useState("");
 
+  const [otp, setOtp] = useState("");
+
+  const [showOTP, setShowOTP] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   /* =========================================
      LOGIN FUNCTION
   ========================================= */
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
 
     e.preventDefault();
 
-    /* TEMP ADMIN LOGIN */
+    if (loading) return;
 
-    if (
+    try {
 
-      email === "admin@slt.lk" &&
+      setLoading(true);
 
-      password === "admin123"
+      const response = await axios.post(
 
-    ) {
+        "http://localhost:5000/api/admin/login",
 
-      /* SAVE TOKEN */
+        {
 
-      localStorage.setItem(
+          email,
 
-        "adminToken",
+          password
 
-        "admin_logged_in"
+        }
 
       );
 
-      /* REDIRECT */
+      if (response.data.success) {
 
-      navigate("/admin/dashboard");
+        localStorage.setItem(
+
+          "adminId",
+
+          response.data.adminId
+
+        );
+
+        setShowOTP(true);
+
+        alert(
+
+          "OTP sent to your email"
+
+        );
+
+      }
 
     }
 
-    else {
+    catch (error) {
 
-      alert("Invalid Admin Credentials");
+      alert(
+
+        error.response?.data?.message ||
+
+        "Login Failed"
+
+      );
+
+    }
+
+    finally {
+
+      setLoading(false);
+
+    }
+
+  };
+
+  /* =========================================
+     VERIFY OTP
+  ========================================= */
+
+  const handleVerifyOTP = async (e) => {
+
+    e.preventDefault();
+
+    if (loading) return;
+
+    try {
+
+      setLoading(true);
+
+      const adminId =
+
+        localStorage.getItem(
+          "adminId"
+        );
+
+      const response = await axios.post(
+
+        "http://localhost:5000/api/admin/verify-otp",
+
+        {
+
+          adminId,
+
+          otp
+
+        }
+
+      );
+
+      if (response.data.success) {
+
+        localStorage.setItem(
+
+          "adminToken",
+
+          response.data.token
+
+        );
+
+        navigate(
+          "/admin/dashboard"
+        );
+
+      }
+
+    }
+
+    catch (error) {
+
+      alert(
+
+        error.response?.data?.message ||
+
+        "OTP Verification Failed"
+
+      );
+
+    }
+
+    finally {
+
+      setLoading(false);
 
     }
 
@@ -64,9 +172,7 @@ const AdminLoginPage = () => {
 
     <div className="admin-login-page">
 
-      {/* =========================================
-         LEFT PANEL
-      ========================================= */}
+      {/* LEFT PANEL */}
 
       <div className="admin-left-panel">
 
@@ -117,9 +223,7 @@ const AdminLoginPage = () => {
 
       </div>
 
-      {/* =========================================
-         RIGHT PANEL
-      ========================================= */}
+      {/* RIGHT PANEL */}
 
       <div className="admin-right-panel">
 
@@ -133,106 +237,183 @@ const AdminLoginPage = () => {
 
           <h1>
 
-            Admin Login
+            {
+
+              showOTP
+
+                ?
+
+                "Verify OTP"
+
+                :
+
+                "Admin Login"
+
+            }
 
           </h1>
 
           <p className="login-subtitle">
 
-            Welcome back! Please sign in to continue.
+            {
+
+              showOTP
+
+                ?
+
+                "Enter the OTP sent to your email"
+
+                :
+
+                "Welcome back! Please sign in to continue."
+
+            }
 
           </p>
 
-          {/* =========================================
-             LOGIN FORM
-          ========================================= */}
+          {/* LOGIN FORM */}
 
-          <form onSubmit={handleLogin}>
+          {
 
-            {/* EMAIL */}
+            !showOTP && (
 
-            <div className="form-group">
+              <form onSubmit={handleLogin}>
 
-              <label>
+                {/* EMAIL */}
 
-                Email Address
+                <div className="form-group">
 
-              </label>
+                  <label>
 
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) =>
+                    Email Address
 
-                  setEmail(e.target.value)
+                  </label>
 
-                }
-                required
-              />
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) =>
 
-            </div>
+                      setEmail(e.target.value)
 
-            {/* PASSWORD */}
+                    }
+                    required
+                  />
 
-            <div className="form-group">
+                </div>
 
-              <label>
+                {/* PASSWORD */}
 
-                Password
+                <div className="form-group">
 
-              </label>
+                  <label>
 
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) =>
+                    Password
 
-                  setPassword(e.target.value)
+                  </label>
 
-                }
-                required
-              />
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) =>
 
-            </div>
+                      setPassword(e.target.value)
 
-            {/* OPTIONS */}
+                    }
+                    required
+                  />
 
-            <div className="login-options">
+                </div>
 
-              <label>
+                <button
+                  type="submit"
+                  className="login-btn"
+                  disabled={loading}
+                >
 
-                <input type="checkbox" />
+                  {
 
-                Remember me
+                    loading
 
-              </label>
+                      ?
 
-              <span className="forgot-password">
+                      "Sending OTP..."
 
-                Forgot Password?
+                      :
 
-              </span>
+                      "Login to Admin Panel"
 
-            </div>
+                  }
 
-            {/* BUTTON */}
+                </button>
 
-            <button
-              type="submit"
-              className="login-btn"
-            >
+              </form>
 
-              Login to Admin Panel
+            )
 
-            </button>
+          }
 
-          </form>
+          {/* OTP FORM */}
 
-          {/* =========================================
-             SECURITY BOX
-          ========================================= */}
+          {
+
+            showOTP && (
+
+              <form onSubmit={handleVerifyOTP}>
+
+                <div className="form-group">
+
+                  <label>
+
+                    Enter OTP
+
+                  </label>
+
+                  <input
+                    type="text"
+                    placeholder="Enter OTP"
+                    value={otp}
+                    onChange={(e) =>
+
+                      setOtp(e.target.value)
+
+                    }
+                    required
+                  />
+
+                </div>
+
+                <button
+                  type="submit"
+                  className="login-btn"
+                  disabled={loading}
+                >
+
+                  {
+
+                    loading
+
+                      ?
+
+                      "Verifying..."
+
+                      :
+
+                      "Verify OTP"
+
+                  }
+
+                </button>
+
+              </form>
+
+            )
+
+          }
+
+          {/* SECURITY BOX */}
 
           <div className="security-box">
 

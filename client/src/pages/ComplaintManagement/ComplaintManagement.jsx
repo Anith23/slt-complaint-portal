@@ -46,10 +46,8 @@ const ComplaintManagement = () => {
     try {
 
       const response = await axios.get(
-
-        "http://localhost:5000/api/complaints/all"
-
-      );
+          `${process.env.REACT_APP_API_URL}/api/complaints/all`
+        );
 
       setComplaints(
 
@@ -80,7 +78,7 @@ const ComplaintManagement = () => {
 
       await axios.put(
 
-        `http://localhost:5000/api/complaints/update-status/${complaintId}`,
+        `${process.env.REACT_APP_API_URL}/api/complaints/update-status/${complaintId}`,
 
         updatedData
 

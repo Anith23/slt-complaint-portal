@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import ProgressSidebar from "../common/ProgressSidebar";
-
 import "../../styles/evidenceUpload.css";
 
 const EvidenceUpload = ({
@@ -563,11 +561,7 @@ const EvidenceUpload = ({
           RIGHT SIDEBAR
       ========================================= */}
 
-      <ProgressSidebar
-        step={4}
-        title="Supporting Evidence"
-        description="Upload evidence or supporting documents related to the complaint."
-      />
+      
 
     </div>
 

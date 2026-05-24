@@ -43,6 +43,9 @@ import UserDashboard from "../pages/UserDashboard/UserDashboard";
 
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 
+import AdminOTP from
+"../pages/AdminOTP/AdminOTP";
+
 /* =========================================
    APP ROUTES
 ========================================= */
@@ -100,6 +103,10 @@ const AppRoutes = () => {
           element={<AdminLoginPage />}
         />
 
+        <Route
+          path="/admin/verify-otp"
+          element={<AdminOTP />}
+        />
         {/* ADMIN DASHBOARD */}
 
         <Route
@@ -134,6 +141,10 @@ const AppRoutes = () => {
         />
 
       </Routes>
+
+      
+
+      
 
     </BrowserRouter>
 

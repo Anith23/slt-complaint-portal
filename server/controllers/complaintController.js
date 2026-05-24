@@ -1,5 +1,10 @@
 const Complaint = require("../models/Complaint");
 
+const generateTrackingCode =
+require("../utils/generateTrackingCode");
+
+const sendEmail =
+require("../utils/sendEmail");
 /* =========================================
    GENERATE CRN
 ========================================= */
@@ -30,6 +35,11 @@ const createComplaint = async (req, res) => {
 
     const crn = await generateCRN();
 
+    /* GENERATE TRACKING CODE */
+
+    const trackingCode =
+      generateTrackingCode();
+
     /* CREATE COMPLAINT */
 
     const complaint = new Complaint({
@@ -38,9 +48,12 @@ const createComplaint = async (req, res) => {
 
       crn,
 
+      trackingCode,
+
       status: "Pending",
 
-      priority: req.body.priority || "Medium",
+      priority:
+        req.body.priority || "Medium",
 
       assignedOfficer: "",
 
@@ -63,15 +76,76 @@ const createComplaint = async (req, res) => {
 
     });
 
+    /* SAVE COMPLAINT */
+
     await complaint.save();
+
+    /* SEND EMAIL ONLY FOR NON-ANONYMOUS USERS */
+
+    if (
+
+      req.body.submissionType !==
+        "Anonymous"
+
+      &&
+
+      req.body.contactEmail
+
+    ) {
+
+      await sendEmail(
+
+        req.body.contactEmail,
+
+        "Complaint Submitted Successfully",
+
+        `
+
+          <h2>
+            Complaint Submitted Successfully
+          </h2>
+
+          <p>
+            Your complaint has been received successfully.
+          </p>
+
+          <h3>
+            Complaint Details
+          </h3>
+
+          <p>
+            <strong>CRN:</strong>
+            ${crn}
+          </p>
+
+          <p>
+            <strong>Tracking Code:</strong>
+            ${trackingCode}
+          </p>
+
+          <p>
+            Please save these details securely
+            for future complaint tracking.
+          </p>
+
+        `
+
+      );
+
+    }
+
+    /* SEND RESPONSE */
 
     res.status(201).json({
 
       success: true,
 
-      message: "Complaint Submitted Successfully",
+      message:
+        "Complaint Submitted Successfully",
 
       crn,
+
+      trackingCode,
 
       complaint
 
@@ -194,20 +268,20 @@ const trackComplaint = async (req, res) => {
     const {
 
       crn,
-      contactTelephone
+      trackingCode
 
     } = req.body;
 
     /* VALIDATION */
 
-    if (!crn || !contactTelephone) {
+    if (!crn || !trackingCode) {
 
       return res.status(400).json({
 
         success: false,
 
         message:
-          "CRN and Telephone Number are required"
+          "CRN and Tracking Code are required"
 
       });
 
@@ -215,14 +289,15 @@ const trackComplaint = async (req, res) => {
 
     /* FIND COMPLAINT */
 
-    const complaint = await Complaint.findOne({
+    const complaint =
+      await Complaint.findOne({
 
-      crn: crn.trim(),
+        crn: crn.trim(),
 
-      contactTelephone:
-        contactTelephone.trim()
+        trackingCode:
+          trackingCode.trim()
 
-    });
+      });
 
     /* NOT FOUND */
 
@@ -232,7 +307,8 @@ const trackComplaint = async (req, res) => {
 
         success: false,
 
-        message: "Complaint not found"
+        message:
+          "Invalid CRN or Tracking Code"
 
       });
 

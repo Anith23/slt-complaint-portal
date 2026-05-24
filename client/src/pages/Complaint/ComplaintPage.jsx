@@ -33,6 +33,8 @@ const ComplaintPage = () => {
 
   const [step, setStep] = useState(1);
 
+  const [submitting, setSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
 
   submissionType: "",
@@ -92,53 +94,69 @@ const ComplaintPage = () => {
   // FINAL SUBMIT
  const submitForm = async () => {
 
-  try {
+    try {
 
-    console.log(formData);
+      setSubmitting(true);
 
-    const response = await axios.post(
+      console.log(formData);
 
-      "http://localhost:5000/api/complaints/create",
+      const response = await axios.post(
 
-      formData
+        "http://localhost:5000/api/complaints/create",
 
-    );
+        formData
 
-    console.log(response.data);
+      );
 
-    localStorage.setItem(
+      console.log(response.data);
 
-      "latestCRN",
+      localStorage.setItem(
 
-      response.data.crn
+        "latestCRN",
 
-    );
+        response.data.crn
 
-    toast.success(
+      );
 
-      `Complaint Submitted Successfully | CRN: ${response.data.crn}`
+      localStorage.setItem(
 
-    );
+        "latestTrackingCode",
 
-    setStep(6);
+        response.data.trackingCode
 
-  }
+      );
 
-  catch (error) {
+      toast.success(
 
-    console.log(error);
+        `Complaint Submitted Successfully | CRN: ${response.data.crn}`
 
-    toast.error(
+      );
 
-      error.response?.data?.message ||
+      setStep(6);
 
-      "Failed to submit complaint"
+    }
 
-    );
+    catch (error) {
 
-  }
+      console.log(error);
 
-};
+      toast.error(
+
+        error.response?.data?.message ||
+
+        "Failed to submit complaint"
+
+      );
+
+    }
+
+    finally {
+
+      setSubmitting(false);
+
+    }
+
+  };
 
   return (
 
@@ -170,9 +188,9 @@ const ComplaintPage = () => {
 
       <div className="container py-5">
 
-        <div className="row g-4">
+        <div className="complaint-content-wrapper">
 
-          <div className="col-12">
+          
 
             {/* STEP 1 */}
 
@@ -243,6 +261,7 @@ const ComplaintPage = () => {
                 nextStep={nextStep}
                 prevStep={prevStep}
                 submitForm={submitForm}
+                submitting={submitting}
               />
 
             )}
@@ -257,7 +276,7 @@ const ComplaintPage = () => {
 
             )}
 
-          </div>
+          
 
         </div>
 

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import ProgressSidebar from "../common/ProgressSidebar";
-
 import ReCAPTCHA from "react-google-recaptcha";
 
 import "../../styles/declaration.css";
@@ -10,7 +8,8 @@ const Declaration = ({
   formData,
   handleChange,
   prevStep,
-  submitForm
+  submitForm,
+  submitting
 }) => {
 
   const [errors, setErrors] = useState({});
@@ -307,9 +306,22 @@ const Declaration = ({
             <button
               className="continue-btn"
               onClick={handleFinalSubmit}
+              disabled={submitting}
             >
 
-              Review & Submit →
+              {
+
+                submitting
+
+                  ?
+
+                  "Submitting..."
+
+                  :
+
+                  "Review & Submit →"
+
+              }
 
             </button>
 
@@ -323,13 +335,7 @@ const Declaration = ({
           RIGHT SIDEBAR
       ========================================= */}
 
-      <ProgressSidebar
-        step="5"
-        title="Declaration"
-        description="Please confirm the declaration and complete verification before submission."
-        infoTitle="Confidentiality Assurance"
-        infoText="All information you provide will be treated with the strictest confidentiality and used only for official investigations."
-      />
+      
 
     </div>
 
