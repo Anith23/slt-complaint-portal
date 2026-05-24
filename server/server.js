@@ -2,22 +2,35 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 
+/* DATABASE */
+
 const connectDB = require("./config/db");
 
-const authRoutes = require("./routes/authRoutes");
+/* ROUTES */
 
-const complaintRoutes = require("./routes/complaintRoutes");
+const authRoutes =
+require("./routes/authRoutes");
 
-const dashboardRoutes = require("./routes/dashboardRoutes");
+const complaintRoutes =
+require("./routes/complaintRoutes");
+
+const dashboardRoutes =
+require("./routes/dashboardRoutes");
 
 const adminRoutes =
 require("./routes/adminRoutes");
+
+const analyticsRoutes =
+require("./routes/analyticsRoutes");
+
+const reportRoutes =
+require("./routes/reportRoutes");
 
 /* CONFIG */
 
 dotenv.config();
 
-/* DATABASE */
+/* DATABASE CONNECTION */
 
 connectDB();
 
@@ -31,14 +44,9 @@ app.use(cors());
 
 app.use(express.json());
 
-/* ROUTES */
-
-app.use(
-  "/api/auth",
-  authRoutes
-);
-
-/* TEST ROUTE */
+/* =========================================
+   TEST ROUTE
+========================================= */
 
 app.get("/", (req, res) => {
 
@@ -48,11 +56,50 @@ app.get("/", (req, res) => {
 
 });
 
-/* PORT */
+/* =========================================
+   API ROUTES
+========================================= */
 
-const PORT = process.env.PORT || 5000;
+app.use(
+  "/api/auth",
+  authRoutes
+);
 
-/* SERVER */
+app.use(
+  "/api/complaints",
+  complaintRoutes
+);
+
+app.use(
+  "/api/dashboard",
+  dashboardRoutes
+);
+
+app.use(
+  "/api/admin",
+  adminRoutes
+);
+
+app.use(
+  "/api/analytics",
+  analyticsRoutes
+);
+
+app.use(
+  "/api/reports",
+  reportRoutes
+);
+
+/* =========================================
+   PORT
+========================================= */
+
+const PORT =
+process.env.PORT || 5000;
+
+/* =========================================
+   SERVER
+========================================= */
 
 app.listen(PORT, () => {
 
@@ -61,20 +108,3 @@ app.listen(PORT, () => {
   );
 
 });
-
-app.use(
-  "/api/complaints",
-  complaintRoutes
-);
-
-app.use("/api/complaints", complaintRoutes);
-
-app.use("/api/dashboard", dashboardRoutes);
-
-app.use(
-
-  "/api/admin",
-
-  adminRoutes
-
-);

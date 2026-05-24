@@ -145,7 +145,7 @@ const Sidebar = () => {
 
           </div>
 
-          {/* INVESTIGATION */}
+          {/* INVESTIGATION 
 
           <div className="menu-item">
 
@@ -155,7 +155,7 @@ const Sidebar = () => {
 
           </div>
 
-          {/* RESOLVED */}
+           RESOLVED 
 
           <div className="menu-item">
 
@@ -163,11 +163,28 @@ const Sidebar = () => {
 
             Resolved Cases
 
-          </div>
+          </div>*/}
 
-          {/* ANALYTICS */}
+          
 
-          <div className="menu-item">
+          <div
+
+            className={`menu-item ${
+              location.pathname === "/admin/analytics"
+
+                ? "active"
+
+                : ""
+
+            }`}
+
+            onClick={() =>
+
+              navigate("/admin/analytics")
+
+            }
+
+          >
 
             <FaChartBar />
 
@@ -175,7 +192,7 @@ const Sidebar = () => {
 
           </div>
 
-          {/* USERS */}
+          {/* USERS 
 
           <div className="menu-item">
 
@@ -185,9 +202,26 @@ const Sidebar = () => {
 
           </div>
 
-          {/* REPORTS */}
+           REPORTS */}
 
-          <div className="menu-item">
+          <div
+
+            className={`menu-item ${
+              location.pathname === "/admin/reports"
+
+                ? "active"
+
+                : ""
+
+            }`}
+
+            onClick={() =>
+
+              navigate("/admin/reports")
+
+            }
+
+          >
 
             <FaClipboardList />
 
@@ -195,7 +229,7 @@ const Sidebar = () => {
 
           </div>
 
-          {/* AUDIT */}
+          {/* AUDIT 
 
           <div className="menu-item">
 
@@ -205,7 +239,7 @@ const Sidebar = () => {
 
           </div>
 
-          {/* SETTINGS */}
+          SETTINGS 
 
           <div className="menu-item">
 
@@ -213,7 +247,7 @@ const Sidebar = () => {
 
             Settings
 
-          </div>
+          </div>*/}
 
         </div>
 

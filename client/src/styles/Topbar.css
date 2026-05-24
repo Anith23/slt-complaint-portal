@@ -1,0 +1,29 @@
+.topbar {
+
+  background: white;
+
+  padding: 25px 30px;
+
+  border-bottom: 1px solid #e8edf5;
+
+}
+
+.topbar h1 {
+
+  font-size: 32px;
+
+  font-weight: 800;
+
+  color: #0f172a;
+
+  margin-bottom: 5px;
+
+}
+
+.topbar p {
+
+  color: #64748b;
+
+  font-size: 14px;
+
+}

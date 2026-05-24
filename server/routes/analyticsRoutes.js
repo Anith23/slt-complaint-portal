@@ -3,18 +3,20 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getDashboardData
-} = require("../controllers/dashboardController");
+
+  getAnalyticsData
+
+} = require("../controllers/analyticsController");
 
 /* =========================================
-   FULL DASHBOARD
+   ANALYTICS DATA
 ========================================= */
 
 router.get(
 
-  "/full",
+  "/",
 
-  getDashboardData
+  getAnalyticsData
 
 );
 

@@ -1,0 +1,412 @@
+import React, {
+
+  useEffect,
+  useState
+
+} from "react";
+
+import axios from "axios";
+
+import DashboardLayout from
+"../../components/layout/DashboardLayout";
+
+import "../../styles/ReportsPage.css";
+
+const ReportsPage = () => {
+
+  /* =========================================
+     STATES
+  ========================================= */
+
+  const [summary, setSummary] =
+    useState(null);
+
+  const [reports, setReports] =
+    useState([]);
+
+  const [categoryData, setCategoryData] =
+    useState([]);
+
+  const [selectedMonth, setSelectedMonth] =
+    useState("2026-05");
+
+  /* =========================================
+     FETCH DATA
+  ========================================= */
+
+  useEffect(() => {
+
+    fetchSummary();
+
+    fetchReports();
+
+    fetchCategoryData();
+
+  }, [selectedMonth]);
+
+  /* =========================================
+     FETCH SUMMARY
+  ========================================= */
+
+  const fetchSummary = async () => {
+
+    try {
+
+      const response = await axios.get(
+
+        `http://localhost:5000/api/reports/summary?month=${selectedMonth}`
+
+      );
+
+      setSummary(response.data.data);
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
+  const fetchReports = async () => {
+
+  try {
+
+    const response = await axios.get(
+
+      `http://localhost:5000/api/reports/all?month=${selectedMonth}`
+
+    );
+
+    setReports(response.data.data);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+
+
+};
+
+
+  const handleDownload = (format) => {
+
+  if (format === "CSV") {
+
+    window.open(
+
+      `http://localhost:5000/api/reports/download/csv?month=${selectedMonth}`
+
+    );
+
+  }
+
+  else if (format === "PDF") {
+
+    window.open(
+
+      `http://localhost:5000/api/reports/download/pdf?month=${selectedMonth}`
+
+    );
+
+  }
+
+};
+
+  /* =========================================
+     FETCH REPORTS
+  ========================================= */
+
+  const fetchCategoryData = async () => {
+
+  try {
+
+    const response = await axios.get(
+
+      `http://localhost:5000/api/reports/category?month=${selectedMonth}`
+
+    );
+
+    const formattedData =
+
+      response.data.data.map(
+
+        (item) => ({
+
+          name: item._id,
+
+          value: item.total
+
+        })
+
+      );
+
+    setCategoryData(
+      formattedData
+    );
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+
+
+};
+
+  return (
+
+    <DashboardLayout
+
+      title="Reports Dashboard"
+
+      subtitle="Generate and manage complaint reports"
+
+    >
+
+      {/* =========================================
+         TOP FILTER BAR
+      ========================================= */}
+
+      <div className="reports-toolbar">
+
+        <input
+          type="month"
+          value={selectedMonth}
+          onChange={(e) =>
+            setSelectedMonth(e.target.value)
+          }
+        />
+
+        <button className="refresh-btn">
+
+          Refresh
+
+        </button>
+
+      </div>
+
+      {/* =========================================
+         TOP CARDS
+      ========================================= */}
+
+      <div className="reports-cards">
+
+        <div className="report-card">
+
+          <h3>Total Complaints</h3>
+
+          <h1>
+
+            {summary?.totalComplaints || 0}
+
+          </h1>
+
+        </div>
+
+        <div className="report-card">
+
+          <h3>Under Investigation</h3>
+
+          <h1>
+
+            {summary?.underInvestigation || 0}
+
+          </h1>
+
+        </div>
+
+        <div className="report-card">
+
+          <h3>Resolved</h3>
+
+          <h1>
+
+            {summary?.resolvedComplaints || 0}
+
+          </h1>
+
+        </div>
+
+        <div className="report-card">
+
+          <h3>Closed</h3>
+
+          <h1>
+
+            {summary?.closedComplaints || 0}
+
+          </h1>
+
+        </div>
+
+      </div>
+
+      {/* =========================================
+         REPORT ACTIONS
+      ========================================= */}
+
+      <div className="report-actions">
+
+        <button
+          className="report-btn"
+          onClick={() => handleDownload("PDF")}
+        >
+
+          Generate PDF Report
+
+        </button>
+
+        <button
+          className="report-btn"
+          onClick={() => handleDownload("Excel")}
+        >
+
+          Export Excel
+
+        </button>
+
+        <button
+          className="report-btn"
+          onClick={() => handleDownload("CSV")}
+        >
+
+          Download CSV
+
+        </button>
+
+      </div>
+
+      {/* =========================================
+         REPORT TABLE
+      ========================================= */}
+
+      <div className="report-table-card">
+
+        <div className="table-header">
+
+          <h2>
+
+            Detailed Reports
+
+          </h2>
+
+          <input
+
+            type="text"
+
+            placeholder="Search report"
+
+            className="report-search"
+
+          />
+
+        </div>
+
+        <table className="reports-table">
+
+          <thead>
+
+            <tr>
+
+              <th>Report Name</th>
+
+              <th>Description</th>
+
+              <th>Generated On</th>
+
+              <th>Generated By</th>
+
+              <th>Format</th>
+
+              <th>Action</th>
+
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            {reports.map((report) => (
+
+              <tr key={report.id}>
+
+                <td>
+
+                  {report.reportName}
+
+                </td>
+
+                <td>
+
+                  {report.description}
+
+                </td>
+
+                <td>
+
+                  {report.generatedOn}
+
+                </td>
+
+                <td>
+
+                  {report.generatedBy}
+
+                </td>
+
+                <td>
+
+                  <span
+
+                    className={`format-badge ${report.format}`}
+
+                  >
+
+                    {report.format}
+
+                  </span>
+
+                </td>
+
+                <td>
+
+                  <button
+                    className="download-btn"
+                    onClick={() =>
+                      handleDownload(report.format)
+                    }
+                  >
+
+                    Download
+
+                  </button>
+
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </DashboardLayout>
+
+  );
+
+};
+
+export default ReportsPage;

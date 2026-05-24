@@ -43,8 +43,13 @@ import UserDashboard from "../pages/UserDashboard/UserDashboard";
 
 import ProtectedRoute from "../components/auth/ProtectedRoute";
 
-import AdminOTP from
-"../pages/AdminOTP/AdminOTP";
+
+
+import AnalyticsPage
+from "../pages/Analytics/AnalyticsPage";
+
+import ReportsPage
+from "../pages/Reports/ReportsPage";
 
 /* =========================================
    APP ROUTES
@@ -103,10 +108,7 @@ const AppRoutes = () => {
           element={<AdminLoginPage />}
         />
 
-        <Route
-          path="/admin/verify-otp"
-          element={<AdminOTP />}
-        />
+        
         {/* ADMIN DASHBOARD */}
 
         <Route
@@ -133,6 +135,15 @@ const AppRoutes = () => {
           }
         />
 
+        <Route
+          path="/admin/analytics"
+          element={
+            <ProtectedRoute>
+              <AnalyticsPage />
+            </ProtectedRoute>
+          }
+        />
+
         {/* DEFAULT REDIRECT */}
 
         <Route
@@ -140,10 +151,23 @@ const AppRoutes = () => {
           element={<Navigate to="/" />}
         />
 
-      </Routes>
+        <Route
 
+          path="/admin/reports"
+
+          element={
+
+            <ProtectedRoute>
+
+              <ReportsPage />
+
+            </ProtectedRoute>
+
+          }
+
+        />
       
-
+      </Routes>
       
 
     </BrowserRouter>
