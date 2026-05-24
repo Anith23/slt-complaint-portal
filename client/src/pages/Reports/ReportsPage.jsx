@@ -54,7 +54,7 @@ const ReportsPage = () => {
 
       const response = await axios.get(
 
-        `http://localhost:5000/api/reports/summary?month=${selectedMonth}`
+        `https://slt-complaint-portal.onrender.com=${selectedMonth}`
 
       );
 
@@ -76,7 +76,7 @@ const ReportsPage = () => {
 
     const response = await axios.get(
 
-      `http://localhost:5000/api/reports/all?month=${selectedMonth}`
+      `https://slt-complaint-portal.onrender.com=${selectedMonth}`
 
     );
 
@@ -101,7 +101,7 @@ const ReportsPage = () => {
 
     window.open(
 
-      `http://localhost:5000/api/reports/download/csv?month=${selectedMonth}`
+      `https://slt-complaint-portal.onrender.com=${selectedMonth}`
 
     );
 
@@ -111,7 +111,7 @@ const ReportsPage = () => {
 
     window.open(
 
-      `http://localhost:5000/api/reports/download/pdf?month=${selectedMonth}`
+      `https://slt-complaint-portal.onrender.com=${selectedMonth}`
 
     );
 
@@ -129,7 +129,7 @@ const ReportsPage = () => {
 
     const response = await axios.get(
 
-      `http://localhost:5000/api/reports/category?month=${selectedMonth}`
+      `https://slt-complaint-portal.onrender.com=${selectedMonth}`
 
     );
 

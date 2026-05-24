@@ -42,7 +42,7 @@ const AdminLoginPage = () => {
 
       const response = await axios.post(
 
-        "http://localhost:5000/api/admin/login",
+        "https://slt-complaint-portal.onrender.com",
 
         {
 
@@ -118,7 +118,7 @@ const AdminLoginPage = () => {
 
       const response = await axios.post(
 
-        "http://localhost:5000/api/admin/verify-otp",
+        "https://slt-complaint-portal.onrender.com",
 
         {
 

@@ -101,7 +101,7 @@ const AnalyticsPage = () => {
 
     const response = await axios.get(
 
-      "http://localhost:5000/api/analytics"
+      "https://slt-complaint-portal.onrender.com"
 
     );
 
@@ -112,7 +112,7 @@ const AnalyticsPage = () => {
     const categoryResponse =
       await axios.get(
 
-        "http://localhost:5000/api/reports/category"
+        "https://slt-complaint-portal.onrender.com"
 
       );
 

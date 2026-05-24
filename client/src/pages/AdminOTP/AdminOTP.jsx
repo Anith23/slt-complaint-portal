@@ -37,7 +37,7 @@ const AdminOTP = () => {
         const response =
           await axios.post(
 
-            "http://localhost:5000/api/admin/verify-otp",
+            "https://slt-complaint-portal.onrender.com",
 
             {
 
